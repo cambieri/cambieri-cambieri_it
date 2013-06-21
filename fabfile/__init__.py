@@ -103,12 +103,12 @@ def prepare_server():
 
 def prepare_deploy():
     with lcd('/home/workspace-django/projects/cambieri-cambieri_it/cambieri_it'):
-        local("python2 ./manage.py test main")
+        local("python ./manage.py test main")
     with lcd('/home/workspace-django/projects/cambieri-cambieri_it'):
         local('git checkout master')
-        local('django-admin.py schemamigration main --auto')
-        local('django-admin.py migrate')
         with settings(warn_only = True):
+            local('django-admin.py schemamigration main --auto')
+            local('django-admin.py migrate')
             local('git add -A && git commit')
         local('git push')
         local('git checkout {0}'.format(config[env.environment]['git']['branch_name']))

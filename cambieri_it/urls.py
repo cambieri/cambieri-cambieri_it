@@ -17,4 +17,4 @@ if settings.DEBUG:
         (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
     )
 
-# handler500 = 'main.views.nondefault_500_error'
+handler500 = 'main.views.nondefault_500_error'
